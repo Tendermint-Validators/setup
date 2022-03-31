@@ -58,7 +58,7 @@ CONFIGFILE="settings.json"
 # Get information about this app.
 APP_NAME="$(jq -r '.app.name' $CONFIGFILE)"
 APP_VERSION="$(jq -r '.app.version' $CONFIGFILE)"
-MANAGED="This file is managed by $APP_NAME. Changed might get overwritten."
+MANAGED="This file is managed by $APP_NAME. Changes might get overwritten."
 
 # Do not restart the service by default.
 RESTART_SERVICE=0
