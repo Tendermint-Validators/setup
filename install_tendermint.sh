@@ -309,9 +309,9 @@ function generate_unjail_script() {
 #! /usr/bin/env bash
 # $MANAGED
 
-$C_HOME/bin/$C_BINARY tx slashing unjail \
-    --from $MONIKER \
-    --yes \
+$C_HOME/bin/$C_BINARY tx slashing unjail \\
+    --from $MONIKER \\
+    --yes \\
     --chain-id $C_CHAIN_ID
 EOF
 }
@@ -357,6 +357,15 @@ $C_HOME/bin/$C_BINARY tx staking create-validator \\
 EOF
 }
 
+function generate_list_wallet_script(){
+  cat <<EOF
+#! /usr/bin/env bash
+# $MANAGED
+
+$C_HOME/bin/$C_BINARY keys list
+EOF
+}
+
 function script_template() {
   SCRIPT="$1"
   GENERATE_FUNCTION="$2"
@@ -385,42 +394,11 @@ function script_template() {
 
 script_template "create_validator" "generate_create_validator_script"
 script_template "create_wallet" "generate_create_wallet_script"
+script_template "list_wallet" "generate_list_wallet_script"
 script_template "logs" "generate_log_script"
 script_template "logs-indexed" "generate_indexed_log_script"
 script_template "show-node-id" "generate_show_node_id_script"
 script_template "unjail" "generate_unjail_script"
-
-function generate_list_wallet_script(){
-  cat <<EOF
-#! /usr/bin/env bash
-# $MANAGED
-
-$C_HOME/bin/$C_BINARY keys list
-EOF
-}
-
-# Ensure that create_validator script is present.
-if [ -f "$C_HOME/bin/list_wallet" ]
-then
-  FILE_CHECKSUM=$(md5sum "$C_HOME/bin/list_wallet" | cut -f1 -d' ')
-  GEN_CHECKSUM=$(generate_list_wallet_script | md5sum | cut -f1 -d' ')
-
-  # Test if file needs to be updated.
-  if [ "$FILE_CHECKSUM" == "$GEN_CHECKSUM" ]
-  then
-    print "list_wallet script is present."
-  else
-    print "Updating list_wallet script."
-    generate_list_wallet_script > "$C_HOME/bin/list_wallet"
-  fi
-else
-  print "Creating list_wallet script."
-  generate_list_wallet_script > "$C_HOME/bin/list_wallet"
-fi
-
-ensure_fileowner "$C_HOME/bin/list_wallet"
-ensure_filemode "$C_HOME/bin/list_wallet" 750
-
 
 # Ensure staging directory is present.
 if [ -d "$C_HOME/staging" ]
