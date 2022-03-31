@@ -1,0 +1,2 @@
+# setup
+Tendermint installation script
