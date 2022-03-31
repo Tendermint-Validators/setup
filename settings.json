@@ -4,16 +4,16 @@
     "version": "v0.0.1"
   },
   "validator": {
+    "amount": 2500000,
     "commission_max_change_rate": 0.30,
     "commission_max_rate": 0.30,
     "commission_rate": 0.05,
-    "amount": 2500000,
-    "website": "https://YOUR.WEBSITE.URL/",
     "details": "YOUR VALIDATOR DESCRIPTION",
-    "security_contact": "YOUR@EMAIL.ADDRESS",
-    "moniker": "YOUR_VALIDATOR_NAME",
     "fees": "20000",
-    "keyname": "VALIDATOR_KEY"
+    "keyname": "VALIDATOR_KEY",
+    "moniker": "YOUR_VALIDATOR_NAME",
+    "security_contact": "YOUR@EMAIL.ADDRESS",
+    "website": "https://YOUR.WEBSITE.URL/"
   },
   "chains": [
     {
