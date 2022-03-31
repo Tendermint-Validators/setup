@@ -5,11 +5,13 @@ having to go through the installation steps to set up a node.
 The script installs support scripts that can be used to create a wallet address and
 promote the node to a validator.
 
-The script supports the following networks:
-- Vidulum
-- Vidulum Testnet
-- BeeZee
-- BeeZee Testnet
+The script supports the following networks and platforms:
+Network         | Platform
+--------------- | -------------
+Vidulum         | Intel/AMD/ARM
+Vidulum Testnet | Intel/AMD/ARM
+BeeZee          | Intel/AMD
+BeeZee Testnet  | Intel/AMD
 
 ## Requirements
 Minimum hardware requirements for x86_64 (Intel/AMD) and arm64 (ARM)
@@ -32,6 +34,9 @@ Storage requirements for the data volume are highly dependant on the type of ins
 Please ensure that you can easily extend the data volume when needed.
 
 Operating System: Ubuntu GNU/Linux 20.4.4 LTS
+
+If you need guidance for installing the operating system them please use this manual:
+[https://github.com/Tendermint-Validators/manuals/blob/main/Install_Ubuntu_20.04.3-LTS.md](https://github.com/Tendermint-Validators/manuals/blob/main/Install_Ubuntu_20.04.3-LTS.md)
 
 ## Installation
 Install a new server for your validator. Ensure that the server is up to date before starting
